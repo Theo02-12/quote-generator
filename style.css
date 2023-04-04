@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    
+    scroll-behavior: smooth;
     font-family: 'Catamaran', sans-serif;
 }
 body{
@@ -16,10 +16,11 @@ header{
     background-position-y: 80%;
     display: flex;
     justify-content: space-evenly;
+    position: relative;
     align-items: center;
     color: white;
 }
-header div{
+header .head-content{
     width: 400px;
     height: 200px;
     padding: 30px;
@@ -30,7 +31,7 @@ header div{
 header div:first-child h2{
     margin-bottom: 25px;
 }
-#author{
+.author{
     position: absolute;
     right: 15px;
     bottom: 10px;
@@ -39,7 +40,7 @@ header div:first-child h2{
     font-size: 20px;
     transition: .5s linear;
 }
-#quote{
+.quote{
     font-size: 20px;
     transition: .5s linear;
 }
@@ -99,7 +100,29 @@ form button:hover{
     justify-content: center;
     align-items: center;
     padding: 20px 0px;
+    z-index: 1;
 }
 .form h1{
     color: rgb(0, 0, 0);
+}
+.btn{
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+}
+.btn a{
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    color: lightgray;
+    background-color: rgba(0, 0, 0, .6);
+}
+#page2{
+    height: 100vh;
+}
+#page2 h2{
+    padding-top: 30px;
+    text-align: center;
 }
