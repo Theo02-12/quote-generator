@@ -12,7 +12,7 @@ header{
     height: 100vh;
     background-image: url(quote.jpg);
     background-size: cover;
-    background-position: 100%;
+    background-position: 50%;
     background-position-y: 80%;
     display: flex;
     justify-content: space-evenly;
@@ -20,13 +20,14 @@ header{
     align-items: center;
     color: white;
 }
-header .head-content{
+.head-content{
     width: 400px;
     height: 200px;
     padding: 30px;
     background-color: rgba(0, 0, 0, .5);
     border-radius: 5px;
     position: relative;
+    margin: 10px;
 }
 header div:first-child h2{
     margin-bottom: 25px;
@@ -79,18 +80,6 @@ form button{
 form input, form button{
     border-radius: 10px;
 }
-
-form button:hover{
-    animation: slide 1s linear;
-}
-@keyframes slide {
-    0%{
-        transform: rotateY(0deg);
-    }
-    100%{
-        transform: rotateY(360deg);
-    }
-}
 .form{
     width: 100%;
     height: 300px;
@@ -120,9 +109,52 @@ form button:hover{
     background-color: rgba(0, 0, 0, .6);
 }
 #page2{
+    width: 100%;
     height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(fond.jpg);
+    background-size: cover;
+    background-position: 10%;
 }
-#page2 h2{
+
+#page2 h2:not(.allQuote){
+    color: white;
+}
+#quoteContent{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#page2 .head-content{
+    transition: all .3s linear;
+    margin: 15px;
+}
+#page2 .head-content:hover{
+    transform: scale(1.1);
+}
+.searchQuote{
+    width: 100%;
+    display: flex;
+    position: absolute;
     padding-top: 30px;
-    text-align: center;
+    justify-content: center;
+    top: 0;
+}
+.searchQuote input{
+    margin: 0px 20px;
+    padding-left: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+}
+.searchQuote a{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 25px;
 }

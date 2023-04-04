@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Générateur de citations</title>
 </head>
 
@@ -32,22 +33,27 @@
                 Vous allez voir apparaître aléatoirement quelques citations sur la droite
             </h2>
         </div>
-        
+
         <div class="head-content">
             <h2 class="quote"></h2>
             <small class="author"></small>
         </div>
-       <div class="btn">
-        <a href="#page2">Les citations</a>
-    </div>
-    <footer>
-        Théo Couvelard &copy;
-    </footer> 
+        <div class="btn">
+            <a href="#page2">LES CITATIONS</a>
+        </div>
+        <footer>
+            Théo Couvelard &copy;
+        </footer>
     </header>
-    
+
 
     <div id="page2">
-        <h2>Toutes les citations</h2>
+        <div class="searchQuote">
+            <h2 class="allQuote">Toutes les citations</h2>
+            <input type="search" placeholder="Rechercher un auteur">
+            <a><i class="fa-solid fa-magnifying-glass"></i></a>
+        </div>      
+        <div id="quoteContent"></div>
     </div>
     <script src="app.js"></script>
 </body>
