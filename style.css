@@ -19,7 +19,7 @@ header{
     align-items: center;
     color: white;
 }
-div{
+header div{
     width: 400px;
     height: 200px;
     padding: 30px;
@@ -51,16 +51,55 @@ footer{
     right: 10px;
 }
 form{
-    position: absolute;
     display: flex;
-    flex-direction: column;
-    left:46%;
-    margin-top: 40px;
     color: black;
+    flex-direction: column;
+    margin-top: 20px;
 }
 form input{
     padding: 10px;
+    width: 230px;
+    margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, .5);
+    border: none;
+    color: lightgray;
 }
-form input:nth-child(2){
-    height: 200px;
+form input::placeholder{
+    color: lightgray;
+}
+form button{
+    background-color: rgba(0, 0, 0, .2);
+    border: none;
+    color: lightgray;
+    padding: 10px 0px;
+    cursor: pointer;
+    border: 1px solid lightgray;
+}
+form input, form button{
+    border-radius: 10px;
+}
+
+form button:hover{
+    animation: slide 1s linear;
+}
+@keyframes slide {
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
+}
+.form{
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+.form h1{
+    color: rgb(0, 0, 0);
 }

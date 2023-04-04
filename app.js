@@ -14,16 +14,14 @@ function post() {
     valueAuthor = authorValue.value;
     valueQuote = quoteValue.value;
 
-
-
     const value2 = {
         "data": {
             "auteur": valueAuthor,
         }
     };
-var newId;
+    var newId;
 
-fetch("http://localhost:1337/api/auteurs", {
+    fetch("http://localhost:1337/api/auteurs", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -31,39 +29,35 @@ fetch("http://localhost:1337/api/auteurs", {
         body: JSON.stringify(value2)
     }).then(response => response.json())
         .then(data => {
-            console.log(data); 
+            console.log(data);
             newId = data.data.id;
-
-            console.log(newId);
-        })
-        
-        const value3 = {
-        "data": {
-            "citation": valueQuote,
-            "auteur": {
-                "id": newId
+            
+            const value3 = {
+                "data": {
+                    "citation": valueQuote,
+                    "auteur": [newId],
                 }
             }
-        }
+            fetch("http://localhost:1337/api/citations/?populate=*", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(value3)
+            }).then(response => response.json())
+                .then(data => {
 
-fetch("http://localhost:1337/api/citations/?populate=*", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(value3)
-    }).then(response => response.json())
-        .then(data => {
-            console.log(data);
-           
+                    alert('Citation ajoutée à la collection')
+                })
         })
-    };
+
+};
 
 bntSubmit.addEventListener('click', post);
 
 
 
-//setInterval(getRandomCitation, 5000)
+setInterval(getRandomCitation, 5000)
 function getRandomCitation() {
     fetch('http://localhost:1337/api/citations/?populate=*')
         .then(res => res.json())
@@ -77,7 +71,7 @@ function getRandomCitation() {
             let getRandom = random(randomQuote, 0)
 
             quote.innerHTML = data.data[getRandom].attributes.citation
-            author.innerHTML = "-" + data.data[getRandom].attributes.auteur.data.attributes.auteur
+            author.innerHTML = "-" + data.data[getRandom].attributes.auteur.data.attributes.auteur + "-";
 
         })
 }
