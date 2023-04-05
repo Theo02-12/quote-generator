@@ -9,6 +9,8 @@ const quoteValue = document.querySelector('#citation');
 const page2 = document.getElementById('page2')
 const quoteContent = document.getElementById('quoteContent')
 
+const search = document.getElementById('search');
+
 
 function post() {
     console.log(authorValue.value, quoteValue.value);
@@ -84,14 +86,16 @@ function getRandomCitation() {
 
 
             data.data.forEach(element => {
-                console.log(element);
 
                 const div = document.createElement('div');
                 const title = document.createElement('h2');
                 const small = document.createElement('small');
+
+
                 div.classList.add('head-content');
                 title.classList.add('quote');
                 small.classList.add('author');
+
 
                 title.innerHTML = element.attributes.citation;
                 small.innerHTML = "-" + element.attributes.auteur.data.attributes.auteur + "-";
@@ -99,9 +103,69 @@ function getRandomCitation() {
 
                 div.append(title, small)
                 quoteContent.append(div)
+
+
             });
+
+
+
+
+
+
 
         })
 }
 
 getRandomCitation();
+
+
+
+function searchAuthor() {
+    const quoteContent = document.getElementById('page3')
+    const searchValue = document.getElementById('searchValue').value;
+    
+    fetch('http://localhost:1337/api/citations/?populate=*')
+    .then(res => res.json())
+    .then(data => {
+        quoteContent.style.height = "100%"
+        
+        
+        data.data.forEach(element =>{
+            
+            //console.log(element.attributes.auteur.data.attributes.auteur);
+            let authorData = element.attributes.auteur.data.attributes.auteur;
+
+            if(searchValue == authorData){
+                console.log(element.attributes.citation)
+                const div = document.createElement('div');
+                const title = document.createElement('h2');
+                const small = document.createElement('small');
+
+                div.classList.add('head-content');
+                title.classList.add('quote');
+                small.classList.add('author');
+
+                title.innerHTML = element.attributes.citation;
+                small.innerHTML = "-" + searchValue + "-";
+
+                div.append(title, small)
+                quoteContent.append(div)
+            }
+            
+        })
+    })
+    
+
+
+    }
+search.addEventListener('click', searchAuthor);
+
+
+const close = document.getElementById('close');
+const page3 = document.getElementById('page3')
+
+function closePage3 (){
+    page3.style.height = "0vh"
+}
+
+close.addEventListener('click', closePage3)

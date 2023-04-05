@@ -92,7 +92,9 @@ form input, form button{
     z-index: 1;
 }
 .form h1{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    background-color: rgba(0, 0, 0, .5);
 }
 .btn{
     position: absolute;
@@ -110,7 +112,7 @@ form input, form button{
 }
 #page2{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -131,7 +133,7 @@ form input, form button{
     justify-content: center;
 }
 #page2 .head-content{
-    transition: all .3s linear;
+    transition: all .2s linear;
     margin: 15px;
 }
 #page2 .head-content:hover{
@@ -140,7 +142,7 @@ form input, form button{
 .searchQuote{
     width: 100%;
     display: flex;
-    position: absolute;
+
     padding-top: 30px;
     justify-content: center;
     top: 0;
@@ -157,4 +159,8 @@ form input, form button{
     background: none;
     cursor: pointer;
     font-size: 25px;
+}
+#page3{
+    height: 0vh;
+    overflow: hidden;
 }
