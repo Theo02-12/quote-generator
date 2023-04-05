@@ -11,7 +11,7 @@ const quoteContent = document.getElementById('quoteContent')
 
 const search = document.getElementById('search');
 
-
+// PARTIE POUR POSTER DES CITATIONS
 function post() {
     console.log(authorValue.value, quoteValue.value);
 
@@ -60,7 +60,7 @@ function post() {
 bntSubmit.addEventListener('click', post);
 
 
-
+// PARTIE POUR GENERER ALEATOIREMENT DES CITATIONS
 
 function getRandomCitation() {
 
@@ -103,69 +103,58 @@ function getRandomCitation() {
 
                 div.append(title, small)
                 quoteContent.append(div)
-
-
             });
-
-
-
-
-
-
-
         })
 }
 
 getRandomCitation();
 
-
+// PARTIE POUR RECHERCHER UN AUTEUR
 
 function searchAuthor() {
     const quoteContent = document.getElementById('page3')
     const searchValue = document.getElementById('searchValue').value;
-    
+
     fetch('http://localhost:1337/api/citations/?populate=*')
-    .then(res => res.json())
-    .then(data => {
-        quoteContent.style.height = "100%"
-        
-        
-        data.data.forEach(element =>{
-            
-            //console.log(element.attributes.auteur.data.attributes.auteur);
-            let authorData = element.attributes.auteur.data.attributes.auteur;
+        .then(res => res.json())
+        .then(data => {
+            quoteContent.style.height = "100%"
 
-            if(searchValue == authorData){
-                console.log(element.attributes.citation)
-                const div = document.createElement('div');
-                const title = document.createElement('h2');
-                const small = document.createElement('small');
 
-                div.classList.add('head-content');
-                title.classList.add('quote');
-                small.classList.add('author');
+            data.data.forEach(element => {
 
-                title.innerHTML = element.attributes.citation;
-                small.innerHTML = "-" + searchValue + "-";
+                //console.log(element.attributes.auteur.data.attributes.auteur);
+                let authorData = element.attributes.auteur.data.attributes.auteur;
 
-                div.append(title, small)
-                quoteContent.append(div)
-            }
-            
+                if (searchValue == authorData) {
+                    console.log(element.attributes.citation)
+                    const div = document.createElement('div');
+                    const title = document.createElement('h2');
+                    const small = document.createElement('small');
+
+                    div.classList.add('head-content');
+                    title.classList.add('quote');
+                    small.classList.add('author');
+
+                    title.innerHTML = element.attributes.citation;
+                    small.innerHTML = "-" + searchValue + "-";
+
+                    div.append(title, small)
+                    quoteContent.append(div)
+                }
+
+            })
         })
-    })
-    
-
-
-    }
+}
 search.addEventListener('click', searchAuthor);
 
 
 const close = document.getElementById('close');
 const page3 = document.getElementById('page3')
 
-function closePage3 (){
-    page3.style.height = "0vh"
+function closePage3() {
+    page3.style.height = "0vh";
+    location.reload();
 }
 
 close.addEventListener('click', closePage3)
